@@ -2,6 +2,23 @@
 
 An end-to-end data analytics and machine learning project that analyzes customer churn, identifies high-risk customers, estimates revenue at risk, and recommends retention actions.
 
+## 📊 Power BI Dashboard Preview
+
+### 1. Executive Overview
+
+![Executive Overview](screenshots/executive-overview.png)
+
+### 2. Customer Risk Intelligence
+
+![Customer Risk Intelligence](screenshots/customer-risk-intelligence.png)
+
+### 3. Churn Drivers & Customer Behavior
+
+![Churn Drivers & Customer Behavior](screenshots/churn-drivers-customer-behavior.png)
+
+### 4. Retention & Revenue Impact
+
+![Retention & Revenue Impact](screenshots/retention-revenue-impact.png)
 ## Project Overview
 
 Customer churn is a major business problem for subscription-based companies. This project analyzes customer behavior and historical churn patterns to identify customers who are more likely to leave.
