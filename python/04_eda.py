@@ -28,9 +28,7 @@ contract_churn["churn_rate"] = (
 
 print(contract_churn)
 
-# ==========================================
 # CHURN BY TENURE GROUP
-# ==========================================
 
 print("\n--- CHURN BY TENURE GROUP ---")
 
@@ -67,10 +65,7 @@ plt.tight_layout()
 plt.show()
 
 
-
-# ==========================================
 # CHURN BY PAYMENT METHOD
-# ==========================================
 
 print("\n--- CHURN BY PAYMENT METHOD ---")
 
@@ -109,9 +104,7 @@ plt.show()
 
 
 
-# ==========================================
 # CHURN BY INTERNET SERVICE
-# ==========================================
 
 print("\n--- CHURN BY INTERNET SERVICE ---")
 
@@ -148,9 +141,7 @@ plt.tight_layout()
 plt.show()
 
 
-# ==========================================
 # CHURN BY MONTHLY CHARGES
-# ==========================================
 
 print("\n--- MONTHLY CHARGES BY CHURN ---")
 
@@ -186,9 +177,7 @@ plt.tight_layout()
 plt.show()
 
 
-# ==========================================
 # CHURN BY SERVICE COUNT
-# ==========================================
 
 print("\n--- CHURN BY SERVICE COUNT ---")
 
@@ -224,9 +213,7 @@ plt.tight_layout()
 plt.show()
 
 
-# ==========================================
 # CHURN BY INDIVIDUAL SERVICES
-# ==========================================
 
 service_features = [
     "online_security",
@@ -256,9 +243,7 @@ for service in service_features:
     print(service_analysis)
 
 
-    # ==========================================
 # CHURN REASONS ANALYSIS
-# ==========================================
 
 print("\n--- TOP CHURN REASONS ---")
 
@@ -277,9 +262,7 @@ churn_reasons.columns = [
 print(churn_reasons)
 
 
-# ==========================================
 # TOP 10 CHURN REASONS
-# ==========================================
 
 top_reasons = churn_reasons.head(10)
 

@@ -1,8 +1,6 @@
 import pandas as pd
 
-# ==========================================
 # LOAD CLEANED DATA
-# ==========================================
 
 df = pd.read_csv(
     "data/processed/customer_churn_cleaned.csv"
@@ -11,9 +9,7 @@ df = pd.read_csv(
 print("Dataset shape:", df.shape)
 
 
-# ==========================================
 # HIGH-RISK SEGMENT
-# ==========================================
 
 df["high_risk_segment"] = (
     (df["contract"] == "Month-to-month") &
@@ -47,9 +43,7 @@ print(
     "%"
 )
 
-# ==========================================
 # REVENUE AT RISK
-# ==========================================
 
 high_risk_revenue = (
     high_risk
@@ -67,9 +61,7 @@ print(
 )
 
 
-# ==========================================
 # OVERALL VS HIGH-RISK
-# ==========================================
 
 overall_churn = df["churn"].mean() * 100
 
@@ -101,16 +93,13 @@ print(
 )
 
 
-# ==========================================
 # EXPLAINABLE CUSTOMER RISK SCORE
-# ==========================================
 
 df["risk_score"] = 0
 
 
-# ------------------------------------------
-# CONTRACT RISK
-# ------------------------------------------
+
+# CONTRACT RISK 
 
 df.loc[
     df["contract"] == "Month-to-month",
@@ -122,10 +111,7 @@ df.loc[
     "risk_score"
 ] += 10
 
-
-# ------------------------------------------
 # TENURE RISK
-# ------------------------------------------
 
 df.loc[
     df["tenure_months"] <= 12,
@@ -139,9 +125,7 @@ df.loc[
 ] += 12
 
 
-# ------------------------------------------
 # PAYMENT RISK
-# ------------------------------------------
 
 df.loc[
     df["payment_method"] == "Electronic check",
@@ -149,9 +133,7 @@ df.loc[
 ] += 20
 
 
-# ------------------------------------------
 # INTERNET SERVICE RISK
-# ------------------------------------------
 
 df.loc[
     df["internet_service"] == "Fiber optic",
@@ -159,9 +141,7 @@ df.loc[
 ] += 15
 
 
-# ------------------------------------------
 # MONTHLY CHARGE RISK
-# ------------------------------------------
 
 charge_75 = df["monthly_charges"].quantile(0.75)
 
@@ -171,9 +151,7 @@ df.loc[
 ] += 10
 
 
-# ------------------------------------------
 # TECH SUPPORT RISK
-# ------------------------------------------
 
 df.loc[
     (df["internet_service"] != "No") &
@@ -182,9 +160,7 @@ df.loc[
 ] += 5
 
 
-# ------------------------------------------
 # ONLINE SECURITY RISK
-# ------------------------------------------
 
 df.loc[
     (df["internet_service"] != "No") &
@@ -194,9 +170,7 @@ df.loc[
 
 
 
-# ==========================================
 # RISK CATEGORY
-# ==========================================
 
 def risk_category(score):
 
@@ -219,11 +193,7 @@ df["risk_category"] = (
 )
 
 
-
-
-# ==========================================
 # RISK DISTRIBUTION
-# ==========================================
 
 print("\n--- RISK CATEGORY DISTRIBUTION ---")
 
@@ -256,9 +226,7 @@ print(
 
 
 
-# ==========================================
 # CRITICAL CUSTOMERS
-# ==========================================
 
 critical_customers = df[
     df["risk_category"] == "Critical"
@@ -287,9 +255,7 @@ print(
 
 
 
-# ==========================================
 # REVENUE AT RISK
-# ==========================================
 
 revenue_at_risk = (
     df[

@@ -141,9 +141,7 @@ preprocessor = ColumnTransformer(
 
 
 
-# ==========================================
 # LOGISTIC REGRESSION
-# ==========================================
 
 logistic_model = Pipeline(
     steps=[
@@ -174,10 +172,7 @@ logistic_probabilities = (
 )
 
 
-
-# ==========================================
 # EVALUATION FUNCTION
-# ==========================================
 
 def evaluate_model(
     name,
@@ -261,9 +256,7 @@ evaluate_model(
 )
 
 
-# ==========================================
 # RANDOM FOREST
-# ==========================================
 
 random_forest_model = Pipeline(
     steps=[
@@ -307,10 +300,7 @@ evaluate_model(
 )
 
 
-
-# ==========================================
 # RANDOM FOREST FEATURE IMPORTANCE
-# ==========================================
 
 print("\n===================================")
 print("RANDOM FOREST FEATURE IMPORTANCE")
@@ -357,9 +347,7 @@ print(
 
 import matplotlib.pyplot as plt
 
-# ==========================================
 # TOP 15 FEATURE IMPORTANCE
-# ==========================================
 
 top_features = (
     feature_importance
@@ -390,9 +378,8 @@ plt.show()
 
 
 
-# ==========================================
+
 # CUSTOMER-LEVEL CHURN PREDICTIONS
-# ==========================================
 
 print("\n===================================")
 print("CUSTOMER-LEVEL CHURN PREDICTIONS")
@@ -432,9 +419,8 @@ prediction_df["predicted_churn"] = (
     all_predictions
 )
 
-# ==========================================
+
 # ML RISK CATEGORY
-# ==========================================
 
 def ml_risk_category(probability):
 
@@ -457,9 +443,7 @@ prediction_df["ml_risk_category"] = (
 )
 
 
-# ==========================================
 # EXPECTED REVENUE AT RISK
-# ==========================================
 
 prediction_df["expected_monthly_revenue_at_risk"] = (
     prediction_df["churn_probability"] / 100
@@ -472,9 +456,7 @@ prediction_df["expected_monthly_revenue_at_risk"] = (
 )
 
 
-# ==========================================
 # RETENTION PRIORITY
-# ==========================================
 
 def retention_priority(row):
 
@@ -505,9 +487,7 @@ prediction_df["retention_priority"] = (
 )
 
 
-# ==========================================
 # RETENTION RECOMMENDATION
-# ==========================================
 
 def retention_action(row):
 
@@ -538,9 +518,7 @@ prediction_df["retention_action"] = (
 )
 
 
-# ==========================================
 # RETENTION PRIORITY SUMMARY
-# ==========================================
 
 print("\n--- RETENTION PRIORITY SUMMARY ---")
 
@@ -573,9 +551,7 @@ priority_summary["revenue_at_risk"] = (
 print(priority_summary)
 
 
-# ==========================================
 # SAVE PREDICTIONS
-# ==========================================
 
 output_path = (
     "data/processed/"
@@ -592,10 +568,7 @@ print(
     output_path
 )
 
-
-# ==========================================
 # TOP 20 RETENTION PRIORITIES
-# ==========================================
 
 top_risk = (
     prediction_df

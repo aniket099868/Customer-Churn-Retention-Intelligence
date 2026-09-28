@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
 
-# ==========================================
 # 1. LOAD DATA
-# ==========================================
 
 df = pd.read_excel(
     "data/raw/Telco_customer_churn.xlsx"
@@ -12,9 +10,7 @@ df = pd.read_excel(
 print("Original shape:", df.shape)
 
 
-# ==========================================
 # 2. STANDARDIZE COLUMN NAMES
-# ==========================================
 
 df.columns = (
     df.columns
@@ -27,9 +23,7 @@ print("\nCleaned column names:")
 print(df.columns.tolist())
 
 
-# ==========================================
 # 3. CONVERT TOTAL CHARGES TO NUMERIC
-# ==========================================
 
 df["total_charges"] = pd.to_numeric(
     df["total_charges"],
@@ -40,25 +34,19 @@ print("\nMissing total_charges:")
 print(df["total_charges"].isnull().sum())
 
 
-# ==========================================
 # 4. CHECK DUPLICATES
-# ==========================================
 
 duplicates = df.duplicated().sum()
 
 print("\nDuplicate rows:", duplicates)
 
 
-# ==========================================
 # 5. REMOVE DUPLICATES
-# ==========================================
 
 df = df.drop_duplicates()
 
 
-# ==========================================
 # 6. HANDLE MISSING TOTAL CHARGES
-# ==========================================
 
 # These records cannot contribute reliable
 # total-charge based analysis.
@@ -67,9 +55,7 @@ df = df.dropna(
 )
 
 
-# ==========================================
 # 7. CONVERT CHURN TO BINARY
-# ==========================================
 
 df["churn"] = (
     df["churn_label"]
@@ -80,17 +66,13 @@ df["churn"] = (
 )
 
 
-# ==========================================
 # 8. CHECK CHURN VALUES
-# ==========================================
 
 print("\nChurn distribution:")
 print(df["churn"].value_counts())
 
 
-# ==========================================
 # 9. CREATE TENURE GROUP
-# ==========================================
 
 def create_tenure_group(months):
 
@@ -112,9 +94,7 @@ df["tenure_group"] = df["tenure_months"].apply(
 )
 
 
-# ==========================================
 # 10. CREATE SERVICE COUNT
-# ==========================================
 
 service_columns = [
     "phone_service",
@@ -133,10 +113,7 @@ df["service_count"] = (
     .sum(axis=1)
 )
 
-
-# ==========================================
 # 11. CUSTOMER VALUE SEGMENT
-# ==========================================
 
 df["customer_value_segment"] = pd.qcut(
     df["total_charges"],
@@ -151,18 +128,14 @@ df["customer_value_segment"] = pd.qcut(
 )
 
 
-# ==========================================
 # 12. ESTIMATED ANNUAL REVENUE
-# ==========================================
 
 df["annualized_revenue"] = (
     df["monthly_charges"] * 12
 )
 
 
-# ==========================================
 # 13. REVENUE CONTRIBUTION
-# ==========================================
 
 df["revenue_status"] = np.where(
     df["churn"] == 1,
@@ -171,9 +144,7 @@ df["revenue_status"] = np.where(
 )
 
 
-# ==========================================
 # 14. SAVE CLEAN DATA
-# ==========================================
 
 output_path = (
     "data/processed/"
@@ -185,10 +156,7 @@ df.to_csv(
     index=False
 )
 
-
-# ==========================================
-# 15. FINAL REPORT
-# ==========================================
+# 15.FINAL REPORT
 
 print("\n===================================")
 print("DATA CLEANING COMPLETED")
